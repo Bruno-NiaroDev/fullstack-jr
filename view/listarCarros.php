@@ -78,6 +78,19 @@
 
   <script>
     $(document).ready(function(){
+      $('.carInfo').click(function(){
+        var carId = $(this).attr('id');
+        
+        $.ajax({
+          url: 'detalharCarro.php?carId='+carId,
+          type: 'get',
+          success: function(response){ 
+            $('.modal-body').html(response);
+            $('#myModal').modal('show')
+          }
+        });
+      });
+      
       $('#myTable').DataTable({
         "language": {
           "lengthMenu": "Mostrando _MENU_ registros por página",
@@ -93,19 +106,6 @@
             "last": "Último"
           }
         }
-      });
-
-      $('.carInfo').click(function(){
-        var carId = $(this).attr('id');
-        
-        $.ajax({
-          url: 'detalharCarro.php?carId='+carId,
-          type: 'get',
-          success: function(response){ 
-            $('.modal-body').html(response);
-            $('#myModal').modal('show')
-          }
-        });
       });
     });
   </script>
