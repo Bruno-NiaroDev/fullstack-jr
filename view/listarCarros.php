@@ -18,6 +18,7 @@
     <h1><i class="fas fa-vial"></i> Teste Full Stack PHP</h1>
     <p>Olá, sou o Bruno e aqui está a minha listagem de carros! <i class="far fa-smile-wink"></i></p>
   </div>
+  <br>
   <div class="container" >
 
     <table id="myTable" class="table-responsive table-striped table-bordered" style="width:100%">
