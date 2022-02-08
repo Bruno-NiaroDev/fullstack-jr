@@ -16,7 +16,7 @@
     <p>Olá, sou o Bruno e aqui está a minha listagem de carros!</p>
   </div>
   <div class="container">
-    <table class="table table-striped table-bordered" style="width:100%">
+    <table id="myTable" class="table table-striped table-bordered" style="width:100%">
       <thead class="thead-light">
         <tr>
           <th>Tipo</th>
@@ -44,6 +44,13 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('#myTable').DataTable();
+    });
+  </script>
 
 </body>
 </html>
