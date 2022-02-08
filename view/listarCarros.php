@@ -1,3 +1,4 @@
+<?php include '../controller/carros.php'; ?>
 <!DOCTYPE html>
 <html lang="pt_bt">
 <head>
@@ -12,12 +13,14 @@
 
 </head>
 <body>
-  <div class="container p-3 my-3 bg-dark text-white">
+
+  <div class="container-fluid p-3 bg-dark text-white">
     <h1><i class="fas fa-vial"></i> Teste Full Stack PHP</h1>
     <p>Olá, sou o Bruno e aqui está a minha listagem de carros! <i class="far fa-smile-wink"></i></p>
   </div>
-  <div class="container">
-    <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+  <div class="container" >
+
+    <table id="myTable" class="table-responsive table-striped table-bordered" style="width:100%">
       <thead class="thead-light">
         <tr>
           <th>Tipo</th>
@@ -30,15 +33,22 @@
         </tr>
       </thead>
       <tbody>
+      <?php 
+        $carros = new CarrosController();
+        foreach($carros->getAllCars() as $car){
+      ?>
         <tr>
-          <td>USADO</td>
-          <td>AUTOMOVEL</td>
-          <td>Ford</td>
-          <td>EcoSport</td>
-          <td>LTZ 1.8</td>
-          <td>2008</td>
+          <td><?php echo $car['tipo']; ?></td>
+          <td><?php echo $car['categoria']; ?></td>
+          <td><?php echo $car['marca']; ?></td>
+          <td><?php echo $car['modelo']; ?></td>
+          <td><?php echo $car['versao']; ?></td>
+          <td><?php echo $car['ano_modelo']; ?></td>
           <td><a href="" style="color: grey"><i class="fas fa-search-plus"></i></a></td>
         </tr>
+      <?php
+        }
+      ?>
       </tbody>
     </table>
   </div>
