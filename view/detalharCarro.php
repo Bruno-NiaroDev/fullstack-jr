@@ -1,24 +1,29 @@
+<?php 
+  include '../controller/carros.php'; 
+  $carros = new CarrosController();
+  $carro = $carros->getCarById($_GET['carId']);
+?>
 <div class="container">
   <div class="row">
     <div class="col-sm-7">
-      <h2>Renault <span class="text-danger">Kwid</span></h2>
-      <p class="text-secondary">Kwid 1.0 Zen</p>
+      <h2><?php echo $carro['marca']; ?> <span class="text-danger"><?php echo $carro['modelo']; ?></span></h2>
+      <p class="text-secondary"><?php echo $carro['versao']; ?></p>
     </div>
     <div class="col-sm-5">
-      <h4>R$ <span class="text-danger">45.990,00</span></h4>
+      <h4>R$ <span class="text-danger"><?php echo number_format($carro['preco'], 2, ',', '.'); ?></span></h4>
     </div>
-    <div class="col-sm-4">Tipo: <b>USADOS</b></div>
-    <div class="col-sm-4">Categoria: <b>AUTOMOVEL</b></div>
-    <div class="col-sm-4">Segmento: <b>Hatch</b></div>
-    <div class="col-sm-4">Ano De Fabricação: <b>2019</b></div>
-    <div class="col-sm-4">Ano Do Modelo: <b>2020</b></div>
-    <div class="col-sm-4">Portas: <b>4</b></div>
+    <div class="col-sm-4">Tipo: <b><?php echo $carro['categoria']; ?></b></div>
+    <div class="col-sm-4">Categoria: <b><?php echo $carro['marca']; ?></b></div>
+    <div class="col-sm-4">Segmento: <b><?php echo $carro['segmento'] == '\0' ? 'Não Informado' : $carro['segmento']; ?></b></div>
+    <div class="col-sm-4">Ano De Fabricação: <b><?php echo $carro['ano_fabricacao']; ?></b></div>
+    <div class="col-sm-4">Ano Do Modelo: <b><?php echo $carro['ano_modelo']; ?></b></div>
+    <div class="col-sm-4">Portas: <b><?php echo $carro['portas']; ?></b></div>
     <div class="col-sm-12">
       <h5>Descrição</h5>
-      <p>NISSAN SENTRA 2.0, carro super novo, COMPLETO, ar condicionado, vidros, travas e retrovisores elÃ©tricos, airbags, impecÃ¡vel! Venha pra Giva Car, o melhor negocio estÃ¡ aqui! Aceitamos seu usado como parte de pagamento, financiamos e parcelamos a entrada no cartÃ£o de credito. Venha conhecer nossa loja! Avenida BarÃ£o de Monte Alegre, 129, Bonfim, em campinas. Reservamos o direito o direito de corrigir erros de digitaÃ§Ã£o. Telefone e WhatsApp (19)33956875.</p>
+      <p><?php echo !empty($carro['descricao']) ? $carro['descricao'] : 'Não Informado'; ?></p>
     </div>
     <div class="col-sm-12">
-      <p class="text-muted">Anúncio Criado em: 23/07/2021 18:07</p>
+      <p class="text-muted">Anúncio Criado em: <?php echo date_format(date_create($carro['dt_cadastro']), 'd/m/Y H:i:s') ?></p>
     </div>
   </div>
 </div>
